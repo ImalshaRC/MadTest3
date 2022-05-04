@@ -19,14 +19,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-<<<<<<< HEAD
-import com.google.firebase.database.Query;
-=======
->>>>>>> 8d61818335af1c15c7112dd115c6e4568bfe04da
+
+
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
-import java.util.Random;
 
 public class Appointment extends AppCompatActivity {
 
