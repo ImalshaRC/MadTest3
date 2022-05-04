@@ -102,14 +102,30 @@
                     android:textSize="25sp"
                     android:layout_marginTop="6dp"/>
 
-                <EditText
-                    android:id="@+id/availableTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:inputType="time"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/availableTime1"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="time"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <EditText
+                        android:id="@+id/availableTime2"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="time"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                </LinearLayout>
 
 
             </LinearLayout>
@@ -205,7 +221,7 @@
                 android:layout_marginRight="20dp"/>
 
             <Button
-                android:id="@+id/buttonOk"
+                android:id="@+id/buttonOkTest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ok"

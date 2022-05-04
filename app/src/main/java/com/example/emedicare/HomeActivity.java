@@ -10,10 +10,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+
 public class HomeActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
-    private Button OTOLARYNGOLOGIES, ORTHOPEDIC, DENTIST, OBSTETRICIAN;
+    private Button OTOLARYNGOLOGIES, ORTHOPEDIC, DENTIST, OBSTETRICIAN, full_blood, fast_blood, urea, ecg;
 
 
 
@@ -26,58 +28,42 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         drawerLayout = findViewById(R.id.drawer_layout);
-
-        OTOLARYNGOLOGIES = findViewById(R.id.btn_oto);
-        ORTHOPEDIC = findViewById(R.id.btn_oyo);
-        DENTIST = findViewById(R.id.btn_den);
-        OBSTETRICIAN = findViewById(R.id.btn_obs);
     }
 
-
-
-    public void OTOLARYNGOLOGIES_btn(View view){
+    public void FullBlood_btn(View view){
 
         Intent intent = new Intent(this, Appointment.class);
 
-        intent.putExtra(EXTRA_Message1, "OTOLARYNGOLOGIES Test");
+        intent.putExtra(EXTRA_Message1, "FULL BLOOD TEST");
         intent.putExtra(EXTRA_Message2, "Asiri Laboratory");
         startActivity(intent);
-
-        Intent i = new Intent(this, Appointment.class);
-        startActivity(i);
     }
 
-    public void ORTHOPEDIC_btn(View view){
+    public void FastBlood_btn(View view){
 
         Intent intent = new Intent(this, Appointment.class);
 
-        intent.putExtra(EXTRA_Message1, "ORTHOPEDIC Test");
+        intent.putExtra(EXTRA_Message1, "FASTING BLOOD TEST");
         intent.putExtra(EXTRA_Message2, "Vasana Laboratory");
         startActivity(intent);
-
-        startActivity(new Intent(HomeActivity.this, Appointment.class));
     }
 
-    public void DENTIST_btn(View view){
+    public void Urea_btn(View view){
 
         Intent intent = new Intent(this, Appointment.class);
 
-        intent.putExtra(EXTRA_Message1, "DENTIST Test");
+        intent.putExtra(EXTRA_Message1, "UREA ELECTROLYTES TEST");
         intent.putExtra(EXTRA_Message2, "Lanka Laboratory");
         startActivity(intent);
-
-        startActivity(new Intent(HomeActivity.this, Appointment.class));
     }
 
-    public void OBSTETRICIAN_btn(View view){
+    public void Ecg_btn(View view){
 
         Intent intent = new Intent(this, Appointment.class);
 
-        intent.putExtra(EXTRA_Message1, "DENTIST Test");
+        intent.putExtra(EXTRA_Message1, "ECG TEST");
         intent.putExtra(EXTRA_Message2, "Singha Laboratory");
         startActivity(intent);
-
-        startActivity(new Intent(HomeActivity.this, Appointment.class));
     }
 
     //Nav Drawer
