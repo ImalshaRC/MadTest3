@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,10 @@ public class Appointment extends AppCompatActivity {
     DatabaseReference ref;
 
     private EditText StartTime, EndTime;
+    private RadioGroup DayRadio;
+    private RadioButton dayButton;
+
+    String day;
 
     private Button btnSubmit;
 
@@ -38,6 +44,16 @@ public class Appointment extends AppCompatActivity {
 
         StartTime = findViewById(R.id.availableTime1);
         EndTime = findViewById(R.id.availableTime2);
+
+        DayRadio = (RadioGroup) findViewById(R.id.radioDayGroup);
+
+        DayRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                dayButton = findViewById(DayRadio.getCheckedRadioButtonId());
+                day = dayButton.getText().toString().trim();
+            }
+        });
 
         btnSubmit = findViewById(R.id.buttonOkTest);
 
@@ -64,13 +80,13 @@ public class Appointment extends AppCompatActivity {
 //                    uploadFeedback( Feedback, autoFeed, Rate );
 //                }
 
-                uploadTest(test_name, lab_name, startTime, endTime);
+                uploadTest(test_name, lab_name, startTime, endTime, day);
             }
         });
     }
 
 
-    private void uploadTest(final String test_name, final String lab_name, final String startTime, final String endTime) {
+    private void uploadTest(final String test_name, final String lab_name, final String startTime, final String endTime, final String day) {
 
         final String key = ref.push().getKey();
 
@@ -79,6 +95,8 @@ public class Appointment extends AppCompatActivity {
         hashMap.put("Lab", lab_name);
         hashMap.put("StartTime",startTime);
         hashMap.put("EndTime",endTime);
+        hashMap.put("Day",day);
+
 
         ref.child(key).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
