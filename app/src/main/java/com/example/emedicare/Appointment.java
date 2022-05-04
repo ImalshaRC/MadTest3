@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,14 +31,17 @@ public class Appointment extends AppCompatActivity {
 
     TextView Test_Name, Lab_Name;
 
-    DatabaseReference ref;
+    DatabaseReference ref,refAuth;
+    private FirebaseUser user;
 
     private EditText StartTime, EndTime;
     private RadioGroup DayRadio;
     private RadioButton dayButton;
+    private String userID;
 
+    private FirebaseAuth mAuth;
 
-    String day,appointmentNo;
+    String fullName, age, day,appointmentNo;
 
     private Button btnSubmit;
 
@@ -45,7 +50,32 @@ public class Appointment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment);
 
+        mAuth = FirebaseAuth.getInstance();
+
+
+
         ref = FirebaseDatabase.getInstance().getReference().child("test");
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        refAuth = FirebaseDatabase.getInstance().getReference().child("Users");
+        userID = user.getUid();
+
+        refAuth.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
+
+                if(userProfile != null){
+                    fullName = userProfile.fullName;
+                    age = userProfile.age;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(Appointment.this, "Something Wrong Happend!" ,Toast.LENGTH_LONG).show();
+            }
+        });
 
         Intent i = getIntent();
 
@@ -101,14 +131,14 @@ public class Appointment extends AppCompatActivity {
 //                    uploadFeedback( Feedback, autoFeed, Rate );
 //                }
 
-                uploadTest(test_name, lab_name, startTime, endTime, day, appointmentNo);
+                uploadTest(test_name, lab_name, startTime, endTime,fullName,age, day, appointmentNo);
             }
         });
 
     }
 
 
-    private void uploadTest( final String test_name, final String lab_name, final String startTime, final String endTime, final String day,final String appointmentNo) {
+    private void uploadTest( final String test_name, final String lab_name, final String startTime, final String endTime,final String fullName,final String age, final String day,final String appointmentNo) {
 
         final String key = ref.push().getKey();
 
@@ -117,8 +147,10 @@ public class Appointment extends AppCompatActivity {
         hashMap.put("Lab", lab_name);
         hashMap.put("StartTime",startTime);
         hashMap.put("EndTime",endTime);
+        hashMap.put("FullName",fullName);
+        hashMap.put("Age",age);
         hashMap.put("Day",day);
-        hashMap.put("appointmentNo",appointmentNo);
+        hashMap.put("AppointmentNo",appointmentNo);
 
 
         ref.child(key).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
