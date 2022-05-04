@@ -1,5 +1,6 @@
 package com.example.emedicare;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -14,8 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
@@ -29,7 +33,8 @@ public class Appointment extends AppCompatActivity {
     private RadioGroup DayRadio;
     private RadioButton dayButton;
 
-    String day;
+
+    String day,appointmentNo;
 
     private Button btnSubmit;
 
@@ -38,7 +43,7 @@ public class Appointment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment);
 
-        ref = FirebaseDatabase.getInstance().getReference().child("Appointment");
+        ref = FirebaseDatabase.getInstance().getReference().child("test");
 
         Intent i = getIntent();
 
@@ -61,6 +66,20 @@ public class Appointment extends AppCompatActivity {
         String lab_name = i.getStringExtra(HomeActivity.EXTRA_Message2);
 
 
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int count = (int) snapshot.getChildrenCount();
+                appointmentNo = String.valueOf(count+1);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+                Toast.makeText(Appointment.this, "appointmentNo Error", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         Test_Name = findViewById(R.id.appoTitle);
         Lab_Name = findViewById(R.id.oppt_place);
 
@@ -80,13 +99,13 @@ public class Appointment extends AppCompatActivity {
 //                    uploadFeedback( Feedback, autoFeed, Rate );
 //                }
 
-                uploadTest(test_name, lab_name, startTime, endTime, day);
+                uploadTest(test_name, lab_name, startTime, endTime, day, appointmentNo);
             }
         });
     }
 
 
-    private void uploadTest(final String test_name, final String lab_name, final String startTime, final String endTime, final String day) {
+    private void uploadTest( final String test_name, final String lab_name, final String startTime, final String endTime, final String day,final String appointmentNo) {
 
         final String key = ref.push().getKey();
 
@@ -96,6 +115,7 @@ public class Appointment extends AppCompatActivity {
         hashMap.put("StartTime",startTime);
         hashMap.put("EndTime",endTime);
         hashMap.put("Day",day);
+        hashMap.put("appointmentNo",appointmentNo);
 
 
         ref.child(key).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
