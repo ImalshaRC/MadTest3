@@ -38,7 +38,7 @@ public class Appointment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment);
 
-        ref = FirebaseDatabase.getInstance().getReference().child("test");
+        ref = FirebaseDatabase.getInstance().getReference().child("Appointment");
 
         Intent i = getIntent();
 
