@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EMedicare">
         <activity
+            android:name=".View_Appointment"
+            android:exported="false" />
+        <activity
             android:name=".Appointment"
             android:exported="false" />
         <activity

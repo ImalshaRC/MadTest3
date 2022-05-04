@@ -1,5 +1,6 @@
 package com.example.emedicare;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -12,10 +13,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Random;
 
 public class Appointment extends AppCompatActivity {
 
@@ -67,6 +73,7 @@ public class Appointment extends AppCompatActivity {
                 uploadTest(test_name, lab_name, startTime, endTime);
             }
         });
+
     }
 
 
@@ -83,8 +90,10 @@ public class Appointment extends AppCompatActivity {
         ref.child(key).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                startActivity(new Intent(getApplicationContext(),HomeActivity.class));
-                Toast.makeText(Appointment.this, "Test successfully added", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(),HomeActivity.class);
+                i.putExtra("FeedKey", key);
+                startActivity(i);
+                Toast.makeText(Appointment.this, "Test Added Successfully", Toast.LENGTH_SHORT).show();
             }
         });
     }
