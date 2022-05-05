@@ -113,6 +113,7 @@
                         android:id="@+id/yourTimeContent1"
                         android:layout_width="120dp"
                         android:layout_height="41dp"
+                        android:gravity="center_horizontal"
                         android:text="time"
                         android:textSize="20sp" />
 
@@ -120,6 +121,7 @@
                         android:id="@+id/yourTimeContent2"
                         android:layout_width="120dp"
                         android:layout_height="41dp"
+                        android:gravity="center_horizontal"
                         android:text="time"
                         android:textSize="20sp" />
 
@@ -201,7 +203,7 @@
         </LinearLayout>
 
         <RadioGroup
-            android:id="@+id/radioDayGroup"
+            android:id="@+id/radioMethodGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
@@ -303,7 +305,7 @@
         android:layout_marginTop="10dp">
 
         <Button
-            android:id="@+id/registerUser"
+            android:id="@+id/registerPayment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
