@@ -144,12 +144,12 @@
                     android:layout_marginTop="6dp"/>
 
                 <TextView
-                    android:id="@+id/hospitalContent"
+                    android:id="@+id/appointmentDayContent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
                     android:text="day"
-                    android:textSize="20sp"
-                    android:layout_marginTop="6dp"/>
+                    android:textSize="20sp" />
 
             </LinearLayout>
 

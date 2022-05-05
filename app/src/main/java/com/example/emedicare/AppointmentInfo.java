@@ -95,7 +95,9 @@ public class AppointmentInfo extends AppCompatActivity {
                 final String Day = day.getText().toString();
 
                 if( StartTime!=null && EndTime!=null && Day!=null ){
-                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    Intent i = new Intent(AppointmentInfo.this, Payment.class);
+                    i.putExtra("testKey", testKey);
+                    startActivity(i);
                 }
                 else{
                     Toast.makeText(AppointmentInfo.this, "Please Fill All Edit Text Fields.", Toast.LENGTH_SHORT).show();
@@ -154,10 +156,9 @@ public class AppointmentInfo extends AppCompatActivity {
         DataRef.child(testKey).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                 Toast.makeText(AppointmentInfo.this, "Test successfully updated", Toast.LENGTH_SHORT).show();
             }
-        });;
+        });
 
     }
 }
