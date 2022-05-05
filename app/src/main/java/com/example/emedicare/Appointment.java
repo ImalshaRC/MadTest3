@@ -156,8 +156,8 @@ public class Appointment extends AppCompatActivity {
         ref.child(key).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Intent i = new Intent(getApplicationContext(),HomeActivity.class);
-                i.putExtra("FeedKey", key);
+                Intent i = new Intent(Appointment.this, AppointmentInfo.class);
+                i.putExtra("testKey", key);
                 startActivity(i);
                 Toast.makeText(Appointment.this, "Test Added Successfully", Toast.LENGTH_SHORT).show();
             }

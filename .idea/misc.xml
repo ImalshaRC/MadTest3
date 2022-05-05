@@ -4,7 +4,6 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Mudi/Desktop/Delivery/MAD/Project/app/src/main/res/layout/activity_appointment.xml" value="0.371875" />
-        <entry key="..\:/Users/Mudi/Desktop/Delivery/MAD/Project/app/src/main/res/layout/activity_appointment_info.xml" value="0.2609375" />
         <entry key="..\:/Users/Mudi/Desktop/MAD/MadTest2/app/src/main/res/layout/activity_bmi.xml" value="0.10208333333333333" />
         <entry key="..\:/Users/Mudi/Desktop/MAD/MadTest2/app/src/main/res/layout/activity_calorie_cal.xml" value="0.10208333333333333" />
         <entry key="..\:/Users/Mudi/Desktop/MAD/MadTest2/app/src/main/res/layout/activity_forgot_password.xml" value="0.10208333333333333" />
@@ -33,12 +32,11 @@
         <entry key="..\:/Users/gf65/AndroidStudioProjects/EMedicare/app/src/main/res/layout/main_toolbar.xml" value="0.1734375" />
         <entry key="..\:/Users/gf65/AndroidStudioProjects/EMedicare/app/src/main/res/layout/main_toolbar_app_update_user.xml" value="0.1734375" />
         <entry key="..\:/Users/gf65/AndroidStudioProjects/Mad Buying project/MadTest2/app/src/main/res/layout/activity_appointment.xml" value="0.1921875" />
-<<<<<<< HEAD
+        <entry key="..\:/Users/gf65/AndroidStudioProjects/Mad Buying project/MadTest2/app/src/main/res/layout/activity_appointment_info.xml" value="0.19375" />
+        <entry key="..\:/Users/gf65/AndroidStudioProjects/Mad Buying project/MadTest2/app/src/main/res/layout/activity_edit_appointment.xml" value="0.25" />
         <entry key="..\:/Users/gf65/AndroidStudioProjects/Mad Buying project/MadTest2/app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/Users/gf65/AndroidStudioProjects/Mad Buying project/MadTest2/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/gf65/AndroidStudioProjects/Mad Buying project/MadTest2/app/src/main/res/layout/activity_view_appointment.xml" value="0.25" />
-=======
->>>>>>> 511bd0b59724cd6fc047e492ee30f05efa4725e8
       </map>
     </option>
   </component>
