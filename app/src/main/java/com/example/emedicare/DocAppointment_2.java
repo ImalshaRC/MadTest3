@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,12 +32,44 @@ public class DocAppointment_2 extends AppCompatActivity {
 
     Button buttonOkTest;
 
-    DatabaseReference ref;
+    DatabaseReference ref,refAuth;
+    private FirebaseUser user;
+    private FirebaseAuth mAuth;
+
+    private String userID;
+
+    String fullName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doc_appointment2);
+
+        mAuth = FirebaseAuth.getInstance();
+
+
+
+        ref = FirebaseDatabase.getInstance().getReference().child("test");
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        refAuth = FirebaseDatabase.getInstance().getReference().child("Users");
+        userID = user.getUid();
+
+        refAuth.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
+
+                if(userProfile != null){
+                    fullName = userProfile.fullName;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(DocAppointment_2.this, "Something Wrong Happend!" ,Toast.LENGTH_LONG).show();
+            }
+        });
 
         ref = FirebaseDatabase.getInstance().getReference().child("docAppointment");
 
@@ -105,6 +139,7 @@ public class DocAppointment_2 extends AppCompatActivity {
 
         HashMap hashMap = new HashMap();
         hashMap.put("AppointmentNo", AppointmentNo);
+        hashMap.put("fullName", fullName);
         hashMap.put("Test_name", test_name);
         hashMap.put("Doc_name", doc_name);
         hashMap.put("Available_Hospital",availableHospital);
