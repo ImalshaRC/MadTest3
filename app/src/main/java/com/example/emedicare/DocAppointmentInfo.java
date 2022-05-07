@@ -46,8 +46,6 @@ public class DocAppointmentInfo extends AppCompatActivity {
         time2 = findViewById(R.id.Time2);
 
 
-
-
         DataRef = FirebaseDatabase.getInstance().getReference().child("docAppointment").child(docKey);
 
         DataRef.addValueEventListener(new ValueEventListener() {

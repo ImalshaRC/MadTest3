@@ -1,6 +1,7 @@
 package com.example.emedicare;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Activity;
@@ -70,6 +71,24 @@ public class DocAppointment extends AppCompatActivity {
 
 
 
+    }
+
+    public void ClickMenu(View view){
+        openDrawer(drawerLayout);
+    }
+
+    public static void openDrawer(DrawerLayout drawerLayout) {
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    public void ClickLogo(View view){
+        closeDrawer(drawerLayout);
+    }
+
+    public static void closeDrawer(DrawerLayout drawerLayout) {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
     }
 
     public void ClickHome (View view){ recreate(); }

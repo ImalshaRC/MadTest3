@@ -2,7 +2,10 @@ package com.example.emedicare;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,10 +34,14 @@ public class BMI extends AppCompatActivity{
 
     String _HEIGHT,_WEIGHT;
 
+    DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bmi);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -101,6 +108,8 @@ public class BMI extends AppCompatActivity{
     public void ClickBack(View view){
         NavDrawer.redirectActivity(this, HomeActivity.class);
     }
+
+
 
 
 }
