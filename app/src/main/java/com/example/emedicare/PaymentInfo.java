@@ -51,7 +51,7 @@ public class PaymentInfo extends AppCompatActivity {
         btnEdit = findViewById(R.id.buttonEditPayment);
         btnDelete = findViewById(R.id.buttonDeletePayment);
         method = findViewById(R.id.method);
-        btnConfirm = findViewById(R.id.buttonConfirmTest);
+        btnConfirm = findViewById(R.id.buttonConfirmPayment);
 
         String paymentKey = getIntent().getStringExtra("paymentKey");
 
