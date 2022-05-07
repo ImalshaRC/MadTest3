@@ -30,6 +30,42 @@ public class HomeActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
     }
 
+    public void Oto_btn(View view){
+
+        Intent intent = new Intent(this, DocAppointment.class);
+
+        intent.putExtra(EXTRA_Message1, "OTOLARYNGOLOGIST");
+        intent.putExtra(EXTRA_Message2, "Dr. Anoma Weerasinghe");
+        startActivity(intent);
+    }
+
+    public void Oyo_btn(View view){
+
+        Intent intent = new Intent(this, DocAppointment.class);
+
+        intent.putExtra(EXTRA_Message1, "OYOPEDIC SERGEON");
+        intent.putExtra(EXTRA_Message2, "Dr. Amila Pathmasiri");
+        startActivity(intent);
+    }
+
+    public void dentist_btn(View view){
+
+        Intent intent = new Intent(this, DocAppointment.class);
+
+        intent.putExtra(EXTRA_Message1, "DENTIST");
+        intent.putExtra(EXTRA_Message2, "Dr. Senarath Kumara");
+        startActivity(intent);
+    }
+
+    public void Obs_btn(View view){
+
+        Intent intent = new Intent(this, DocAppointment.class);
+
+        intent.putExtra(EXTRA_Message1, "OBSTETRICIAN GYNECOLOGYST(VOG)");
+        intent.putExtra(EXTRA_Message2, "Dr. Anura Kumara");
+        startActivity(intent);
+    }
+
     public void FullBlood_btn(View view){
 
         Intent intent = new Intent(this, Appointment.class);
@@ -92,6 +128,10 @@ public class HomeActivity extends AppCompatActivity {
         redirectActivity(this, Profile.class);
     }
 
+    public void ClickPayment (View view){
+        redirectActivity(this, Test.class);
+    }
+
     public void ClickBMI (View view){
         redirectActivity(this, BMI.class);
     }
@@ -105,7 +145,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void ClickStepCounter (View view){
-        redirectActivity(this, Appointment.class);
+        redirectActivity(this, StepCounter.class);
     }
 
     public void ClickLogOut(View view){
