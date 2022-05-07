@@ -55,7 +55,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="3dp"
                 android:layout_marginLeft="10dp"
-                android:text="OTOLARYNGOLOGIST" />
+                android:text="OTOLARYNGOLOGIST"
+                android:onClick="Oto_btn" />
 
             <Button
                 android:id="@+id/btn_oyo"
@@ -63,7 +64,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="3dp"
                 android:layout_marginLeft="10dp"
-                android:text="OYOPEDIC SERGEON" />
+                android:text="OYOPEDIC SERGEON"
+                android:onClick="Oyo_btn"/>
 
             <Button
                 android:id="@+id/btn_den"
@@ -71,7 +73,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="3dp"
                 android:layout_marginLeft="10dp"
-                android:text="DENTIST" />
+                android:text="DENTIST"
+                android:onClick="dentist_btn" />
 
             <Button
                 android:id="@+id/btn_obs"
@@ -79,7 +82,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="3dp"
                 android:layout_marginLeft="10dp"
-                android:text="OBSTETRICIAN GYNECOLOGYST(VOG)" />
+                android:text="OBSTETRICIAN GYNECOLOGYST(VOG)"
+                android:onClick="Obs_btn" />
 
             <TextView
                 android:id="@+id/textView6"
