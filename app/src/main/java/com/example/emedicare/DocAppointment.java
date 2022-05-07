@@ -20,6 +20,9 @@ public class DocAppointment extends AppCompatActivity {
     private RadioButton hosButton;
 
     private Button btnSubmit;
+    String hospital;
+
+    TextView Test_Name, Doc_Name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
