@@ -105,7 +105,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void ClickStepCounter (View view){
-        redirectActivity(this, Appointment.class);
+        redirectActivity(this, StepCounter.class);
     }
 
     public void ClickLogOut(View view){
