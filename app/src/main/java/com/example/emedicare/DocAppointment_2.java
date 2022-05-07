@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,7 +16,9 @@ import java.util.HashMap;
 public class DocAppointment_2 extends AppCompatActivity {
 
     TextView appoTitle, docTitle, availableHospital;
-    RadioButton time1,time2;
+    RadioButton time1,time2,timeButton;
+    private RadioGroup timeRadio;
+    String time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,7 @@ public class DocAppointment_2 extends AppCompatActivity {
         appoTitle = findViewById(R.id.appoTitle);
         docTitle = findViewById(R.id.docTitle);
         availableHospital = findViewById(R.id.availableHospital);
+        timeRadio = (RadioGroup) findViewById(R.id.radioGroup);
 
         time1 = findViewById(R.id.Time1);
         time2 = findViewById(R.id.Time2);
@@ -37,7 +41,10 @@ public class DocAppointment_2 extends AppCompatActivity {
         docTitle.setText(Doc_name);
         availableHospital.setText(Hospital_name);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 06e3d2bbde1f3993a7dcfd48c1153ed0074114bd
         if (Hospital_name.equals("Asiri Medical Hospital")){
             time1.setText("Sunday 9.00AM - 11.00AM");
             time2.setText("Saturday 5.00PM - 7.00PM");
@@ -46,6 +53,15 @@ public class DocAppointment_2 extends AppCompatActivity {
             time1.setText("Sunday 7.00AM - 9.00AM");
             time2.setText("Saturday 1.00PM - 3.00PM");
         }
+
+        timeRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkId) {
+                timeButton = findViewById(timeRadio.getCheckedRadioButtonId());
+                time = timeButton.getText().toString().trim();
+
+            }
+        });
 
     }
 
