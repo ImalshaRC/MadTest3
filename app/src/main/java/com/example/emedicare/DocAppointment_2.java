@@ -7,9 +7,6 @@ import android.widget.TextView;
 
 public class DocAppointment_2 extends AppCompatActivity {
 
-    TextView Test_Name, Doc_Name;
-    String hospital;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

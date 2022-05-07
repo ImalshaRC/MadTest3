@@ -152,12 +152,6 @@ public class HomeActivity extends AppCompatActivity {
         NavDrawer.logout(this);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        NavDrawer.closeDrawer(drawerLayout);
-    }
-
     public static void redirectActivity(Activity activity,Class aClass) {
         Intent intent = new Intent(activity,aClass);
 
@@ -166,6 +160,14 @@ public class HomeActivity extends AppCompatActivity {
         activity.startActivity(intent);
 
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        NavDrawer.closeDrawer(drawerLayout);
+    }
+
+
 
     @Override
     protected void onStart() {

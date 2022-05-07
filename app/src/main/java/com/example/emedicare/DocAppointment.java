@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 public class DocAppointment extends AppCompatActivity {
 
+    TextView Test_Name, Doc_Name;
+    String hospital;
+
 
     private RadioGroup radioGroupHospital;
     private RadioButton hosButton;
