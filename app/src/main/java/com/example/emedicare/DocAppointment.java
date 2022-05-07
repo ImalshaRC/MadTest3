@@ -4,15 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class DocAppointment extends AppCompatActivity {
-
-    TextView Test_Name, Doc_Name;
-    String hospital;
 
 
     private RadioGroup radioGroupHospital;
@@ -47,6 +45,17 @@ public class DocAppointment extends AppCompatActivity {
         });
 
         btnSubmit = findViewById(R.id.buttonOkDoc);
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(DocAppointment.this, DocAppointment_2.class);
+                i.putExtra("Test_name", test_name);
+                i.putExtra("Doc_name", doc_name);
+                i.putExtra("Hospital_name", hospital);
+                startActivity(i);
+            }
+        });
 
     }
 }
