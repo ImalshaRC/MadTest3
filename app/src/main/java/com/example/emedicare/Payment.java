@@ -57,12 +57,11 @@ public class Payment extends AppCompatActivity {
 
 
         String testKey = getIntent().getStringExtra("testKey");
-
-        DataRef = FirebaseDatabase.getInstance().getReference().child("test").child(testKey);
-
-        ref = FirebaseDatabase.getInstance().getReference().child("payment");
+        String doc_test = getIntent().getStringExtra("doc_test");
 
         methodRadio = (RadioGroup) findViewById(R.id.radioMethodGroup);
+
+        ref = FirebaseDatabase.getInstance().getReference().child("payment");
 
         methodRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -71,6 +70,8 @@ public class Payment extends AppCompatActivity {
                 method = methodButton.getText().toString().trim();
             }
         });
+
+        DataRef = FirebaseDatabase.getInstance().getReference().child("test").child(testKey);
 
         DataRef.addValueEventListener(new ValueEventListener() {
             @Override

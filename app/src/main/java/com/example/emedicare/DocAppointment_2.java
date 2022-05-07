@@ -134,7 +134,6 @@ public class DocAppointment_2 extends AppCompatActivity {
                 uploadDocAppointment(appointmentNo, Test_name, Doc_name, Hospital_name, time, fullName);
             }
         });
-
     }
 
 

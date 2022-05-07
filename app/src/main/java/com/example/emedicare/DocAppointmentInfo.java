@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,7 +29,7 @@ public class DocAppointmentInfo extends AppCompatActivity {
     TextView appointmentNo, test_name, doc_name, availableHospital,fullName;
     private RadioGroup timeRadio;
     RadioButton time1,time2, timeButton;
-    Button buttonEditTest;
+    Button buttonEditTest, buttonOkTest;
     String time;
 
     @Override
@@ -50,6 +51,7 @@ public class DocAppointmentInfo extends AppCompatActivity {
         time2 = findViewById(R.id.Time2);
 
         buttonEditTest = findViewById(R.id.buttonEditTest);
+        buttonOkTest = findViewById(R.id.buttonOkTest);
 
         DataRef = FirebaseDatabase.getInstance().getReference().child("docAppointment").child(docKey);
 
@@ -96,17 +98,26 @@ public class DocAppointmentInfo extends AppCompatActivity {
             }
         });
 
+        timeRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkId) {
+                timeButton = findViewById(timeRadio.getCheckedRadioButtonId());
+                time = timeButton.getText().toString().trim();
+            }
+        });
+
+        buttonOkTest.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent i = new Intent(DocAppointmentInfo.this, HomeActivity.class);
+                i.putExtra("doc_test", "doctor");
+                startActivity(i);
+            }
+        });
+
         buttonEditTest.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-
-                timeRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup radioGroup, int checkId) {
-                        timeButton = findViewById(timeRadio.getCheckedRadioButtonId());
-                        time = timeButton.getText().toString().trim();
-                    }
-                });
 
                 if( time!=null ){
                     updateDocAppointment( time );
