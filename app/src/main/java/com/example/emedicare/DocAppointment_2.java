@@ -47,10 +47,6 @@ public class DocAppointment_2 extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-
-
-        ref = FirebaseDatabase.getInstance().getReference().child("test");
-
         user = FirebaseAuth.getInstance().getCurrentUser();
         refAuth = FirebaseDatabase.getInstance().getReference().child("Users");
         userID = user.getUid();

@@ -18,9 +18,11 @@ import com.google.firebase.database.ValueEventListener;
 public class DocAppointmentInfo extends AppCompatActivity {
 
     DatabaseReference DataRef;
-    TextView appointmentNo, test_name, doc_name, availableHospital, time,fullName;
+    TextView appointmentNo, test_name, doc_name, availableHospital,fullName;
     private RadioGroup timeRadio;
     RadioButton time1,time2;
+
+    String time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +52,7 @@ public class DocAppointmentInfo extends AppCompatActivity {
                     test_name.setText(snapshot.child("Test_name").getValue().toString());
                     doc_name.setText(snapshot.child("Doc_name").getValue().toString());
                     availableHospital.setText(snapshot.child("Available_Hospital").getValue().toString());
-                    time.setText(snapshot.child("Date_Time").getValue().toString());
+                    time = snapshot.child("Date_Time").getValue().toString();
                 }
                 else{
                     Toast.makeText(DocAppointmentInfo.this, "Error with fetching data", Toast.LENGTH_SHORT).show();
