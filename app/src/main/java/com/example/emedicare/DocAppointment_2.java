@@ -65,7 +65,6 @@ public class DocAppointment_2 extends AppCompatActivity {
 
                 if(userProfile != null){
                     fullName = userProfile.fullName;
-                    Toast.makeText(DocAppointment_2.this, fullName ,Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -100,7 +99,6 @@ public class DocAppointment_2 extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int count = (int) snapshot.getChildrenCount();
                 appointmentNo = String.valueOf(count+1);
-                Toast.makeText(DocAppointment_2.this, appointmentNo ,Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -131,6 +129,11 @@ public class DocAppointment_2 extends AppCompatActivity {
         buttonOkTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(timeRadio.getCheckedRadioButtonId() == -1){
+                    Toast.makeText(DocAppointment_2.this, "Select day and time", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 uploadDocAppointment(appointmentNo, Test_name, Doc_name, Hospital_name, time, fullName);
             }
         });
