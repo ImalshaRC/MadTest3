@@ -1,7 +1,9 @@
 package com.example.emedicare;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,18 +15,24 @@ import android.widget.TextView;
 public class DocAppointment extends AppCompatActivity {
 
 
+    DrawerLayout drawerLayout;
+
+    TextView Test_Name, Doc_Name;
+    String hospital;
+
+
     private RadioGroup radioGroupHospital;
     private RadioButton hosButton;
 
     private Button btnSubmit;
-    String hospital;
-
-    TextView Test_Name, Doc_Name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doc_appointment);
+
+
+        drawerLayout = findViewById(R.id.drawer_layout);
 
         Intent i = getIntent();
 
@@ -59,6 +67,47 @@ public class DocAppointment extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+
+
+    }
+
+    public void ClickHome (View view){ recreate(); }
+
+    public void ClickMyProfile (View view){
+        redirectActivity(this, Profile.class);
+    }
+
+    public void ClickPayment (View view){
+        redirectActivity(this, Test.class);
+    }
+
+    public void ClickBMI (View view){
+        redirectActivity(this, BMI.class);
+    }
+
+    public void ClickHealthCal (View view){
+        redirectActivity(this, HealthCalculator.class);
+    }
+
+    public void ClickCalorieCal (View view){
+        redirectActivity(this, CalorieCal.class);
+    }
+
+    public void ClickStepCounter (View view){
+        redirectActivity(this, StepCounter.class);
+    }
+
+    public void ClickLogOut(View view){
+        NavDrawer.logout(this);
+    }
+
+    public static void redirectActivity(Activity activity, Class aClass) {
+        Intent intent = new Intent(activity,aClass);
+
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        activity.startActivity(intent);
 
     }
 }
