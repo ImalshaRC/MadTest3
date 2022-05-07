@@ -149,6 +149,8 @@ public class DocAppointment_2 extends AppCompatActivity {
             public void onSuccess(Void unused) {
                 Intent i = new Intent(DocAppointment_2.this, DocAppointmentInfo.class);
                 i.putExtra("docKey", key);
+                i.putExtra("appNo", appointmentNo);
+                i.putExtra("fName", fullName);
                 startActivity(i);
                 Toast.makeText(DocAppointment_2.this, "Doctor Appointment Added Successfully", Toast.LENGTH_SHORT).show();
             }

@@ -30,6 +30,8 @@ public class DocAppointmentInfo extends AppCompatActivity {
         setContentView(R.layout.activity_doc_appointment_info);
 
         String docKey = getIntent().getStringExtra("docKey");
+        String appNo = getIntent().getStringExtra("appNo");
+        String fName = getIntent().getStringExtra("fName");
 
         appointmentNo = findViewById(R.id.appointmentDayContent);
         fullName = findViewById(R.id.fullName);
@@ -47,8 +49,8 @@ public class DocAppointmentInfo extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    appointmentNo.setText(snapshot.child("AppointmentNo").getValue().toString());
-                    fullName.setText(snapshot.child("FullName").getValue().toString());
+                    appointmentNo.setText(appNo);
+                    fullName.setText(fName);
                     test_name.setText(snapshot.child("Test_name").getValue().toString());
                     doc_name.setText(snapshot.child("Doc_name").getValue().toString());
                     availableHospital.setText(snapshot.child("Available_Hospital").getValue().toString());
