@@ -129,6 +129,26 @@ public class Appointment extends AppCompatActivity {
                 final String startTime = StartTime.getText().toString();
                 final String endTime = EndTime.getText().toString();
 
+<<<<<<< HEAD
+=======
+                if(startTime.isEmpty()){
+                    StartTime.setError("Start Time is Required");
+                    StartTime.requestFocus();
+                    return;
+                }
+
+                if(endTime.isEmpty()){
+                    EndTime.setError("End Time is Required");
+                    EndTime.requestFocus();
+                    return;
+                }
+
+                if(DayRadio.getCheckedRadioButtonId() == -1){
+                    Toast.makeText(Appointment.this, "Select a Day", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+>>>>>>> d9e2f10e936c53adfb5ce5659985f56359cd5f23
                 uploadTest(test_name, lab_name, startTime, endTime,fullName,age, day, appointmentNo);
             }
         });

@@ -103,6 +103,29 @@ public class Payment extends AppCompatActivity {
                 String CVC = cvc.getText().toString();
                 String EXP = exp.getText().toString();
 
+                if(methodRadio.getCheckedRadioButtonId() == -1){
+                    Toast.makeText(Payment.this, "Select payment method", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(CardNo.isEmpty()){
+                    cardNo.setError("Card Number is Required");
+                    cardNo.requestFocus();
+                    return;
+                }
+
+                if(CVC.isEmpty()){
+                    cvc.setError("CVC is Required");
+                    cvc.requestFocus();
+                    return;
+                }
+
+                if(EXP.isEmpty()){
+                    exp.setError("Expire Date is Required");
+                    exp.requestFocus();
+                    return;
+                }
+
                 uploadPayment(AppNo, Day, StartTime, EndTime, Amount, method, CardNo, CVC, EXP);
             }
         });

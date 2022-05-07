@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DocAppointment extends AppCompatActivity {
 
@@ -64,6 +65,11 @@ public class DocAppointment extends AppCompatActivity {
                 Intent i = new Intent(DocAppointment.this, DocAppointment_2.class);
                 i.putExtra("Test_name", test_name);
                 i.putExtra("Doc_name", doc_name);
+                if(radioGroupHospital.getCheckedRadioButtonId() == -1){
+                    Toast.makeText(DocAppointment.this, "Select a Hospital", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 i.putExtra("Hospital_name", hospital);
                 startActivity(i);
             }
