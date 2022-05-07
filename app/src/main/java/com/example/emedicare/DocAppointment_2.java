@@ -31,7 +31,7 @@ public class DocAppointment_2 extends AppCompatActivity {
         docTitle.setText(Doc_name);
         availableHospital.setText(Hospital_name);
 
-        if (Hospital_name=="Asiri Medical Hospital"){
+        if (Hospital_name.equals("Asiri Medical Hospital")){
             time1.setText("Sunday 9.00AM - 11.00AM");
             time2.setText("Saturday 5.00PM - 7.00PM");
         }else{
