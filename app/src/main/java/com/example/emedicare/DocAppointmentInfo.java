@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +19,8 @@ public class DocAppointmentInfo extends AppCompatActivity {
 
     DatabaseReference DataRef;
     TextView appointmentNo, test_name, doc_name, availableHospital, time,fullName;
+    private RadioGroup timeRadio;
+    RadioButton time1,time2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +34,10 @@ public class DocAppointmentInfo extends AppCompatActivity {
         test_name = findViewById(R.id.appoTitle);
         doc_name = findViewById(R.id.docTitle);
         availableHospital = findViewById(R.id.availableHospital);
-        time = findViewById(R.id.availableTime);
+        timeRadio = findViewById(R.id.radioGroupDayandTime);
+        time1 = findViewById(R.id.Time1);
+        time2 = findViewById(R.id.Time2);
+
 
         DataRef = FirebaseDatabase.getInstance().getReference().child("docAppointment").child(docKey);
 
@@ -55,5 +62,14 @@ public class DocAppointmentInfo extends AppCompatActivity {
 
             }
         });
+
+        if (availableHospital.equals("Asiri Medical Hospital")){
+            time1.setText("Sunday 9.00AM - 11.00AM");
+            time2.setText("Saturday 5.00PM - 7.00PM");
+
+        }else{
+            time1.setText("Sunday 7.00AM - 9.00AM");
+            time2.setText("Saturday 1.00PM - 3.00PM");
+        }
     }
 }
