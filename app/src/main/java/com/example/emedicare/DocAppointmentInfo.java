@@ -29,7 +29,7 @@ public class DocAppointmentInfo extends AppCompatActivity {
     TextView appointmentNo, test_name, doc_name, availableHospital,fullName;
     private RadioGroup timeRadio;
     RadioButton time1,time2, timeButton;
-    Button buttonEditTest, buttonOkTest;
+    Button buttonEditTest, buttonOkTest, buttonDelete;
     String time;
 
     @Override
@@ -49,6 +49,7 @@ public class DocAppointmentInfo extends AppCompatActivity {
         timeRadio = findViewById(R.id.radioGroupDayandTime);
         time1 = findViewById(R.id.Time1);
         time2 = findViewById(R.id.Time2);
+        buttonDelete = findViewById(R.id.buttonDelete);
 
         buttonEditTest = findViewById(R.id.buttonEditTest);
         buttonOkTest = findViewById(R.id.buttonOkTest);
@@ -95,6 +96,33 @@ public class DocAppointmentInfo extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DataRef = FirebaseDatabase.getInstance().getReference().child("docAppointment");
+                DataRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.hasChild(docKey)) {
+                            DataRef = FirebaseDatabase.getInstance().getReference().child("docAppointment").child(docKey);
+                            DataRef.removeValue();
+
+                            Toast.makeText(getApplicationContext(), "Doctor Appointment Deleted Successfully!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                        }
+                        else
+                            Toast.makeText(getApplicationContext(), "No Source To Display!", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 

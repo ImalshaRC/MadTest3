@@ -131,6 +131,9 @@ public class DocAppointment_2 extends AppCompatActivity {
         buttonOkTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
                 uploadDocAppointment(appointmentNo, Test_name, Doc_name, Hospital_name, time, fullName);
             }
         });
