@@ -18,9 +18,11 @@ import com.google.firebase.database.ValueEventListener;
 public class DocAppointmentInfo extends AppCompatActivity {
 
     DatabaseReference DataRef;
-    TextView appointmentNo, test_name, doc_name, availableHospital, time,fullName;
+    TextView appointmentNo, test_name, doc_name, availableHospital,fullName;
     private RadioGroup timeRadio;
     RadioButton time1,time2;
+
+    String time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ public class DocAppointmentInfo extends AppCompatActivity {
 
         String docKey = getIntent().getStringExtra("docKey");
 
-        appointmentNo = findViewById(R.id.appointmentNo);
+        appointmentNo = findViewById(R.id.appointmentDayContent);
         fullName = findViewById(R.id.fullName);
         test_name = findViewById(R.id.appoTitle);
         doc_name = findViewById(R.id.docTitle);
@@ -46,11 +48,11 @@ public class DocAppointmentInfo extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
                     appointmentNo.setText(snapshot.child("AppointmentNo").getValue().toString());
-                    fullName.setText(snapshot.child("fullName").getValue().toString());
+                    fullName.setText(snapshot.child("FullName").getValue().toString());
                     test_name.setText(snapshot.child("Test_name").getValue().toString());
                     doc_name.setText(snapshot.child("Doc_name").getValue().toString());
                     availableHospital.setText(snapshot.child("Available_Hospital").getValue().toString());
-                    time.setText(snapshot.child("Date_Time").getValue().toString());
+                    time = snapshot.child("Date_Time").getValue().toString();
                 }
                 else{
                     Toast.makeText(DocAppointmentInfo.this, "Error with fetching data", Toast.LENGTH_SHORT).show();

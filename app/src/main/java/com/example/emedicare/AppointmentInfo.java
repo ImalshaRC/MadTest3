@@ -115,7 +115,6 @@ public class AppointmentInfo extends AppCompatActivity {
                         if (dataSnapshot.hasChild(testKey)) {
                             DataRef = FirebaseDatabase.getInstance().getReference().child("test").child(testKey);
                             DataRef.removeValue();
-                            //clearControls();
 
                             Toast.makeText(getApplicationContext(), "Test Deleted Successfully!", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
@@ -144,14 +143,6 @@ public class AppointmentInfo extends AppCompatActivity {
         hashMap.put("StartTime",StartTime);
         hashMap.put("EndTime",EndTime);
         hashMap.put("Day",Day);
-
-//        DataRef.child(testKey).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
-//            @Override
-//            public void onSuccess(Void unused) {
-//                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-//                Toast.makeText(AppointmentInfo.this, "Test successfully updated", Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
         DataRef.child(testKey).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

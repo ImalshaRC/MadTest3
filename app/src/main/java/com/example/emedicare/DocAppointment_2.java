@@ -47,10 +47,6 @@ public class DocAppointment_2 extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-
-
-        ref = FirebaseDatabase.getInstance().getReference().child("test");
-
         user = FirebaseAuth.getInstance().getCurrentUser();
         refAuth = FirebaseDatabase.getInstance().getReference().child("Users");
         userID = user.getUid();
@@ -62,6 +58,7 @@ public class DocAppointment_2 extends AppCompatActivity {
 
                 if(userProfile != null){
                     fullName = userProfile.fullName;
+                    Toast.makeText(DocAppointment_2.this, fullName ,Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -96,6 +93,7 @@ public class DocAppointment_2 extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int count = (int) snapshot.getChildrenCount();
                 appointmentNo = String.valueOf(count+1);
+                Toast.makeText(DocAppointment_2.this, appointmentNo ,Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -126,20 +124,20 @@ public class DocAppointment_2 extends AppCompatActivity {
         buttonOkTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                uploadDocAppointment(appointmentNo, Test_name, Doc_name, Hospital_name, time);
+                uploadDocAppointment(appointmentNo, Test_name, Doc_name, Hospital_name, time, fullName);
             }
         });
 
     }
 
 
-    private void uploadDocAppointment( final String AppointmentNo, final String test_name, final String doc_name, final String availableHospital, final String time) {
+    private void uploadDocAppointment( final String AppointmentNo, final String test_name, final String doc_name, final String availableHospital, final String time, final String fName) {
 
         final String key = ref.push().getKey();
 
         HashMap hashMap = new HashMap();
         hashMap.put("AppointmentNo", AppointmentNo);
-        hashMap.put("fullName", fullName);
+        hashMap.put("FullName", fName);
         hashMap.put("Test_name", test_name);
         hashMap.put("Doc_name", doc_name);
         hashMap.put("Available_Hospital",availableHospital);
