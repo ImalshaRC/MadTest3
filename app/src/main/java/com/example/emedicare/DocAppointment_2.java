@@ -26,5 +26,7 @@ public class DocAppointment_2 extends AppCompatActivity {
         docTitle.setText(Doc_name);
         availableHospital.setText(Hospital_name);
 
+
+
     }
 }
