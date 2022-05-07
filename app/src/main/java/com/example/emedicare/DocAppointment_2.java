@@ -129,15 +129,11 @@ public class DocAppointment_2 extends AppCompatActivity {
         buttonOkTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-<<<<<<< HEAD
 
-
-=======
                 if(timeRadio.getCheckedRadioButtonId() == -1){
                     Toast.makeText(DocAppointment_2.this, "Select day and time", Toast.LENGTH_SHORT).show();
                     return;
                 }
->>>>>>> d9e2f10e936c53adfb5ce5659985f56359cd5f23
 
                 uploadDocAppointment(appointmentNo, Test_name, Doc_name, Hospital_name, time, fullName);
             }
@@ -227,6 +223,5 @@ public class DocAppointment_2 extends AppCompatActivity {
         activity.startActivity(intent);
 
     }
-
 
 }
