@@ -156,14 +156,30 @@
                 android:text="Available Time:-"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/availableTime"
+            <RadioGroup
+                android:id="@+id/radioGroupDayandTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Time"
-                android:textSize="20sp" />
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/Time1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:text="day and time " />
+
+                <RadioButton
+                    android:id="@+id/Time2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:text="day and time" />
+            </RadioGroup>
 
         </LinearLayout>
 
@@ -181,6 +197,13 @@
             android:gravity="center_horizontal">
 
             <Button
+                android:id="@+id/buttonEditTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update"
+                android:layout_marginRight="20dp"/>
+
+            <Button
                 android:id="@+id/buttonCancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -193,6 +216,7 @@
                 android:layout_height="wrap_content"
                 android:text="Ok"
                 android:layout_marginLeft="20dp"/>
+
 
 
 
