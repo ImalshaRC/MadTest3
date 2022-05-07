@@ -107,7 +107,6 @@ public class Appointment extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
                 Toast.makeText(Appointment.this, "appointmentNo Error", Toast.LENGTH_SHORT).show();
             }
         });
