@@ -5,17 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class DocAppointmentInfo extends AppCompatActivity {
@@ -23,8 +27,8 @@ public class DocAppointmentInfo extends AppCompatActivity {
     DatabaseReference DataRef;
     TextView appointmentNo, test_name, doc_name, availableHospital,fullName;
     private RadioGroup timeRadio;
-    RadioButton time1,time2;
-
+    RadioButton time1,time2, timeButton;
+    Button buttonEditTest;
     String time;
 
     @Override
@@ -45,6 +49,7 @@ public class DocAppointmentInfo extends AppCompatActivity {
         time1 = findViewById(R.id.Time1);
         time2 = findViewById(R.id.Time2);
 
+        buttonEditTest = findViewById(R.id.buttonEditTest);
 
         DataRef = FirebaseDatabase.getInstance().getReference().child("docAppointment").child(docKey);
 
@@ -58,7 +63,6 @@ public class DocAppointmentInfo extends AppCompatActivity {
                     test_name.setText(snapshot.child("Test_name").getValue().toString());
                     doc_name.setText(snapshot.child("Doc_name").getValue().toString());
                     availableHospital.setText(snapshot.child("Available_Hospital").getValue().toString());
-//                    time = snapshot.child("Date_Time").getValue().toString();
 
                     if (snapshot.child("Available_Hospital").getValue().toString().equals("Asiri Medical Hospital")){
                         time1.setText("Sunday 9.00AM - 11.00AM");
@@ -92,6 +96,42 @@ public class DocAppointmentInfo extends AppCompatActivity {
             }
         });
 
+        buttonEditTest.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
 
+                timeRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(RadioGroup radioGroup, int checkId) {
+                        timeButton = findViewById(timeRadio.getCheckedRadioButtonId());
+                        time = timeButton.getText().toString().trim();
+                    }
+                });
+
+                if( time!=null ){
+                    updateDocAppointment( time );
+                }
+                else{
+                    Toast.makeText(DocAppointmentInfo.this, "Please Fill All Edit Text Fields.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    private void updateDocAppointment(final String time) {
+
+        DataRef = FirebaseDatabase.getInstance().getReference().child("docAppointment");
+
+        String testKey = getIntent().getStringExtra("docKey");
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("Date_Time", time);
+
+        DataRef.child(testKey).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Toast.makeText(DocAppointmentInfo.this, "Doctor appointment successfully updated", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
