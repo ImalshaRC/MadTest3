@@ -33,13 +33,13 @@ public class Appointment extends AppCompatActivity {
 
     DatabaseReference ref,refAuth;
     private FirebaseUser user;
+    private FirebaseAuth mAuth;
 
     private EditText StartTime, EndTime;
     private RadioGroup DayRadio;
     private RadioButton dayButton;
     private String userID;
 
-    private FirebaseAuth mAuth;
 
     String fullName, age, day,appointmentNo;
 
